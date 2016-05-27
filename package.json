@@ -1,0 +1,23 @@
+{
+  "name": "module-loaders",
+  "version": "1.0.0",
+  "description": "Learning React and Webpack through LearnCode.academy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dustinchang/React_Learning_LearnCode.Academy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dustinchang/React_Learning_LearnCode.Academy/issues"
+  },
+  "homepage": "https://github.com/dustinchang/React_Learning_LearnCode.Academy#readme",
+  "dependencies": {
+    "lodash": "^4.13.1",
+    "webpack": "^1.13.1"
+  }
+}
