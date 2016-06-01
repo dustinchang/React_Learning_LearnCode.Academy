@@ -11,18 +11,13 @@ module.exports = {
       {
         target: 'node',
         test: /\.jsx?$/,
-        //include: [path.resolve(__dirname, "./src")],
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-0'],
-          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
-        }
       }
     ]
   },
   output: {
-    path: __dirname + "/src/",
+    path: __dirname + "/dest/",
     filename: "client.min.js"
   },
   plugins: debug ? [] : [
