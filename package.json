@@ -4,6 +4,9 @@
   "description": "Learning React and Webpack through LearnCode.academy",
   "main": "index.js",
   "scripts": {
+    "dev-watch": "node_modules/.bin/webpack-dev-server --inline --hot",
+    "dev_src": "node_modules/.bin/webpack-dev-server --content-base src --inline --hot",
+    "dev": "node_modules/.bin/webpack-dev-server --content-base src --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
