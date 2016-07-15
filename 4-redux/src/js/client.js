@@ -1,5 +1,7 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 
+//These Reducers aren't used in tut5
+/*
 const userReducer = (state={}, action) => {
     switch (action.type) {
         case "CHANGE_NAME": {
@@ -13,22 +15,52 @@ const userReducer = (state={}, action) => {
     }
     return state;
 };
-
 const postsReducer = (state=[], action) => {
     return state;
 };
-
 const reducers = combineReducers({
     user: userReducer,
     posts: postsReducer
 });
+*/
 
-const store = createStore(reducers);
+const reducer = (initialState=0, action) => {
+  if (action.type === "INC") {
+     return initialState + 1;
+   } else if (action.type === "DEC") {
+     return initialState - 1;
+   } else if (action.type === "E") {
+     throw new Error('AAAAA!!!!!');
+   }
+   return initialState;
+}
+
+const logger = (store) => (next) => (action) => {
+  console.log('action fired,', action);
+  //action.type = 'DEC'; //modifying action type
+  next(action);
+}
+
+const error = (store) => (next) => (action) => {
+  try {
+    next(action);
+  } catch (e) {
+    console.log('AHHHHH!!!', e);
+  }
+}
+
+const middleware = applyMiddleware(logger, error);
+
+const store = createStore(reducer, 1, middleware); //later move 1 to reducer
 
 store.subscribe(() => {
   console.log('store changed', store.getState());
 })
 
-store.dispatch({type: 'CHANGE_NAME', payload: "Dustin"})
-store.dispatch({type: 'CHANGE_AGE', payload: 24})
-store.dispatch({type: 'CHANGE_AGE', payload: 25})
+store.dispatch({type: 'INC'})
+store.dispatch({type: 'INC'})
+store.dispatch({type: 'INC'})
+store.dispatch({type: 'DEC'})
+store.dispatch({type: 'DEC'})
+store.dispatch({type: 'DEC'})
+store.dispatch({type: 'E'})
